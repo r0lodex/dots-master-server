@@ -1,0 +1,302 @@
+html, body{
+    width:100%; 
+    height:100%;
+    margin:0;
+}
+
+#content {
+	position: absolute;
+	border: 1px solid rgb(200, 200, 200);
+	box-shadow: 0 0 10px rgba(0,0,0,0.5);
+}
+
+.screen {
+	position: absolute;
+	top: 0;
+	left: 0;
+	z-index:2;
+	width:100%; 
+    height:100%;
+}
+
+.mouseTransparent {
+	pointer-events:none;
+	background:none !important;
+}
+
+.modalDialog {
+	z-index: 4;
+}
+
+.modalBackground {
+	background-color: #000;
+	opacity: 0.5;
+	z-index: 0;
+	width: 100%;
+	height: 100%;
+	position: absolute;
+	filter: alpha(opacity=60);
+	top: 0;
+	left: 0;
+}
+
+#actionBar {
+	height: 35px;
+	z-index: 3;
+	margin: 10px;
+	position: absolute;
+}
+
+.panelButton {
+	width: 32px;
+	height: 32px;
+	float: left;
+	margin: 1px;
+}
+
+#panelBtnHome {
+	background-image: url('images/home_32x32.png');
+}
+
+#panelBtnChat {
+	background-image: url('images/chat_alt_stroke_32x32.png');
+}
+
+#panelBtnUndo {
+	background-image: url('images/undo_32x32.png');
+}
+
+#panelBtnHome:hover {
+	background-image: url('images/home_hover_32x32.png');
+}
+
+#panelBtnChat:hover {
+	background-image: url('images/chat_alt_stroke_hover_32x32.png');
+}
+
+#panelBtnUndo:hover {
+	background-image: url('images/undo_hover_32x32.png');
+}
+
+#hintWindow {
+	background: #333;
+	width: 250px;
+	height: 40px;
+	opacity: 0.8;
+	color: white;
+	z-index: 4;
+	margin-top: 100px;
+	margin-left: auto;
+	margin-right: auto;
+	position: relative;
+	box-shadow: 3px 0 5px rgba(0,0,0,0.5);
+	font-weight: bold;
+	text-align: center;
+}
+
+#gameSurface {
+	cursor: auto;
+	position: absolute;
+	top: 0;
+	left: 0;
+	z-index:0;
+	-webkit-tap-highlight-color: rgba(255, 255, 255, 0);
+}
+
+#title {
+	font-size: 40px;
+	color: blue;
+	text-align: center;
+	margin: 15px 0;
+	font-family: cursive;
+}
+
+#menu {
+	position:relative; 
+	top:50%;
+	margin-top:-120px;
+}
+
+.menuItem {
+	text-align: center;
+	font-size: 24px;
+	color: #00f;
+	font-family: cursive;
+	cursor: pointer;
+}
+
+.menuItem:nth-child(2n) {
+	color: #00a;
+}
+
+.menuItem:hover {
+	color:#888;
+}
+
+.borderedFrame {
+	border: 1px solid rgb(200, 200, 200);
+	border-radius: 10px;
+	box-shadow: 0 0 10px rgba(0,0,0,0.5);
+	padding: 10px;
+}
+
+#gameConf {
+	position: relative;
+	top: 50%;
+	font-size: 24;
+	color: blue;
+	background: white;
+	display: block;
+	width: 250px;
+	left: 50%;
+	margin-left: -136px;
+	margin-top: -65px;
+}
+
+.dialogButtonsPanel {
+	padding-bottom: 15px;
+	height: 25px;
+}
+
+.dlgBtn {
+	text-align: center;
+	color: blue;
+	cursor: pointer;
+	width: 100px;
+	padding: 5px;
+	margin: 5px;
+	border: 1px solid rgb(200, 200, 200);
+}
+
+.dlgBtn:hover {
+	color:#000;
+	background-color: #ddd;
+}
+
+#waitingDialogBody {
+	position: relative;
+	top: 50%;
+	font-size: 24;
+	color: blue;
+	background: white;
+	display: block;
+	width: 250px;
+	left: 50%;
+	margin-left: -136px;
+	border: 1px solid rgb(200, 200, 200);
+	border-radius: 10px;
+	box-shadow: 0 0 10px rgba(0,0,0,0.5);
+	padding: 10px;
+	margin-top: -65px;
+}
+
+#gameOverDialogBody {
+	position: relative;
+	top: 50%;
+	font-size: 24;
+	color: blue;
+	background: white;
+	display: block;
+	width: 250px;
+	left: 50%;
+	margin-left: -136px;
+	border: 1px solid rgb(200, 200, 200);
+	border-radius: 10px;
+	box-shadow: 0 0 10px rgba(0,0,0,0.5);
+	padding: 10px;
+	margin-top: -65px;	
+}
+
+#aboutContent {
+	padding: 50px 15px 0;
+	text-align: center;
+	font-size: 15pt;
+	color: #00E;
+}
+
+#networkChatPanel {
+	position: relative;
+	width: 100%;
+	height: 90%;
+	margin-left: auto;
+	margin-right: auto;
+	margin-top: 15px;
+	max-width: 400px;
+	background-color: #ffffaa;
+}
+
+#chatDisplay {
+	overflow: hidden;
+	position: absolute;
+	left: 0;
+	right: 0;
+	bottom: 0;
+	margin: 5px;
+}
+
+#chatInputPanel {
+	position: absolute;
+	height: 50px;
+	bottom: 0;
+	left: 0;
+	right: 0;
+	margin: 5px;
+}
+
+#chatInputArea {
+	width: 100%;
+	height: 100%;
+	webkit-box-sizing: border-box;
+	-moz-box-sizing: border-box;
+	-ms-box-sizing: border-box;
+	box-sizing: border-box;
+}
+
+.closeButton {
+	width: 32px;
+	height: 32px;
+	background-image: url('images/x_alt_32x32.png');
+}
+
+.closeButton:hover {
+	background-image: url('images/x_alt_hover_32x32.png');
+}
+
+#chatCloseButton {
+	cursor: pointer;
+	position: absolute;
+	right: -7px;
+	top: -7px;
+}
+
+#chatTitle {
+	height: 30px;
+    position: absolute;      
+    text-align: center;
+    left: 0;
+    right: 0;
+    font-size: 16pt;
+    color: blue;
+}
+
+#chatDisplayContainer {
+	overflow: auto;  
+	position: absolute;  
+	left: 0;  
+	right: 0;  
+    top: 30px;
+    bottom: 60px;  
+    margin: 5px;
+}
+
+#unreadMsgLabel {
+	position: absolute;
+	right: -10px;
+	top: -10px;
+	border: 2px solid rgb(255, 0, 0);
+	border-radius: 10px;
+	color: red;
+	min-width: 15px;
+	text-align: center;
+	display: none;
+}

@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Dots</title>
+	<meta name="viewport" content="initial-scale=1.0, width=device-width, target-densitydpi=device-dpi, minimum-scale=1.0, user-scalable=no" />
+	<link rel="stylesheet" type="text/css" href="main.css" />
+	<script type="text/javascript" src="dots.js"></script>
+	<script type="text/javascript" src="ui.js"></script>
+	<script type="text/javascript" src="jquery-2.0.0.min.js"></script>
+	<script type="text/javascript">
+		var game = new Game(200, 200);
+		var gameView;
+
+		function onLoad() {
+			gameView = new GameView(game, document.getElementById("gameSurface"));
+			onResize();
+			ui.pushController(new MainMenuScreen());
+		};
+
+		function onResize() { 
+			var margin = 20;
+			var content = $('#content');
+			content.css('top', margin + "px");
+			content.css('left', margin + "px");
+			content.width($(document).width() - margin * 2);
+			content.height($(document).height() - margin * 2);
+			var gameSurface = $('#gameSurface')[0];
+			gameSurface.width = content.width();
+			gameSurface.height = content.height();
+			var uiLayer = $('#uiLayer'); 
+			uiLayer.width(content.width());
+			uiLayer.height(content.height());
+			if (gameView) {
+				gameView.draw();
+			}
+		}
+	</script>
+</head>
+<body onload="onLoad()" onresize="onResize()">
+	<div id="content">
+		<canvas id="gameSurface"></canvas>
+		<div id="actionBar" style="display:none;">
+			<div class="panelButton" id="panelBtnHome"></div>
+			<div class="panelButton" id="panelBtnChat"><div id="unreadMsgLabel">0</div></div>
+			<div class="panelButton" id="panelBtnUndo"></div>
+		</div>
+		<div id="hintWindow" style="display:none;"></div>
+	</div>
+
+	<div id="screens" style="display:none;">
+		<div id="menuScreen" class="screen" style="display:none;">
+			<div id="title">Dots v1.0</div>
+			<div id="menu">
+				<div class="menuItem" id="miPlayOnline">Play online</div>
+				<div class="menuItem" id="miPlayWithAI">Play with AI</div>
+				<div class="menuItem" id="miPlayHotSeat">Hotseat</div>
+				<div class="menuItem" id="miHelp">Wikipedia</div>
+				<div class="menuItem" id="miAbout">About</div>
+			</div>
+		</div>
+		<div id="aboutScreen" class="screen" style="display:none;">
+			<div id="aboutContent">
+				<div style="font-size: 25pt;margin-bottom: 20px;">Dots v1.0</div>
+				<div>PhloX Development Team</div>
+				<br>
+				<div>Programming: Pheodor Tsapana a.k.a. FedeX (<a href= "mailto:truefedex@gmail.com" >truefedex@gmail.com</a>)</div>
+				<div>Special thanks to creators of Iconic icon set (<a href="http://somerandomdude.com/work/iconic/">http://somerandomdude.com/work/iconic/</a>)</div>
+				<br>
+				<div>2013 year</div>
+			</div>
+		</div>
+		<div id="gameConfScreen" class="screen" style="display:none;">
+			<div id="gameConf" class="borderedFrame">
+				<div>Game configuration</div>
+				<hr>
+				<div style="padding: 10px 15px 10px;">Map Size: 
+					<select id="mapSize" style="float: right; width: 150px;">
+						<option value="small">Small (15x20)</option>
+					    <option selected value="middle">Middle (25x30)</option>
+					    <option value="large">Large (30x35)</option>
+					</select>
+				</div>
+				<div class="dialogButtonsPanel">
+					<div class="dlgBtn" id="cancelBtn" style="float:left">Cancel</div><div class="dlgBtn" id="okBtn" style="float:right">Ok</div>
+				</div>
+			</div>
+		</div>
+		<div id="waitingDialog" class="screen" style="display:none;">
+			<div id="waitingDialogBody">
+				<div id="waitingDialogMessage">
+					Waiting for opponent...
+				</div>
+			</div>
+		</div>
+		<div id="gameOverDialog" class="screen" style="display:none;">
+			<div id="gameOverDialogBody">
+				<div id="gameOverDlgTitle"></div>
+				<hr>
+				<div style="padding: 10px 15px 10px;">
+					<div id="gameResult"></div>
+					<div id="gameStatistics"></div>
+				</div>
+				<div class="dialogButtonsPanel">
+					<div class="dlgBtn" id="gameOverMenuBtn" style="float:left">Menu</div><div class="dlgBtn" id="analizeBtn" style="float:right">Analize</div>
+				</div>
+			</div>
+		</div>
+		<div id="networkChatDialog" class="screen" style="display:none;">
+			<div id="networkChatOverlay" class="modalBackground"></div>
+			<div id="networkChatPanel" style="" class="borderedFrame">
+				<div id="chatTitle">Chat</div>
+				<div id="chatDisplayContainer">
+					<div id="chatDisplay"></div>
+				</div>
+				<div id="chatInputPanel"><textarea id="chatInputArea" placeholder="Type your message here..."></textarea></div>
+				<div id="chatCloseButton" class="closeButton"></div>
+			</div>
+		</div>
+	</div>
+</body>
+</html>
