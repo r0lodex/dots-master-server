@@ -7,11 +7,6 @@ import (
 
 func init() {
 	http.HandleFunc("/login", loginHandler)
-	http.HandleFunc("/", defaultHandler)
-}
-
-func defaultHandler(response http.ResponseWriter, request *http.Request) {
-	utils.WriteJsonResponse(response, "{\"test\":\"pass\"}")
 }
 
 func loginHandler(response http.ResponseWriter, request *http.Request) {
