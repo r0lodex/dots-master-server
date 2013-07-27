@@ -55,13 +55,13 @@ func init() {
 }
 
 func registerHandler(response http.ResponseWriter, request *http.Request) {
-	if !(utils.CheckValue(request.FormValue(KEY_LOGIN), utils.Rule{MinLen: 3, MaxLen: 100}) &&
-		utils.CheckValue(request.FormValue(KEY_PASSWORD), utils.Rule{MinLen: 3, MaxLen: 100}) &&
-		utils.CheckValue(request.FormValue(KEY_ALIAS), utils.Rule{MinLen: 3, MaxLen: 100}) &&
-		utils.CheckValue(request.FormValue(KEY_EMAIL), utils.Rule{MinLen: 3, MaxLen: 500, Regex: "^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\\.[a-zA-Z0-9-.]+$"}) &&
-		utils.CheckValue(request.FormValue(KEY_CAPTCHA_ID), utils.Rule{MinLen: 1, MaxLen: 100}) &&
-		utils.CheckValue(request.FormValue(KEY_CAPTCHA_VAL), utils.Rule{MinLen: 1, MaxLen: 100})) {
-		http.Error(response, utils.MSG_WRONG_PARAMETERS, http.StatusBadRequest)
+	if !(utils.CheckValue(request, KEY_LOGIN, utils.Rule{Min: 3, Max: 100}) &&
+		utils.CheckValue(request, KEY_PASSWORD, utils.Rule{Min: 3, Max: 100}) &&
+		utils.CheckValue(request, KEY_ALIAS, utils.Rule{Min: 3, Max: 100}) &&
+		utils.CheckValue(request, KEY_EMAIL, utils.Rule{Min: 3, Max: 500, Regex: "^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\\.[a-zA-Z0-9-.]+$"}) &&
+		utils.CheckValue(request, KEY_CAPTCHA_ID, utils.Rule{Min: 1, Max: 100}) &&
+		utils.CheckValue(request, KEY_CAPTCHA_VAL, utils.Rule{Min: 1, Max: 100})) {
+		http.Error(response, utils.GetLastValidationError().Error(), http.StatusBadRequest)
 		return
 	}
 

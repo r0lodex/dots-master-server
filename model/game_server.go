@@ -7,9 +7,10 @@ import (
 const DB_KIND_GAME_SERVER = "GameServer"
 
 type GameServer struct {
-    Name         string
-    IP           string
-    Port         int
-    LatestPing   time.Time
+    Name            string
+    Address         string
+    Active          bool
+    ProtocolVersion int
+    LastActivationChange time.Time
     RegisteredAt time.Time
 }

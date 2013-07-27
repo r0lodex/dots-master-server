@@ -1,0 +1,4 @@
+cron:
+- description: game servers scanning
+  url: /gamesrv/cron
+  schedule: every 24 hours
