@@ -1,4 +1,4 @@
 cron:
 - description: game servers scanning
-  url: /gamesrv/cron
+  url: /api/gamesrv/cron
   schedule: every 24 hours

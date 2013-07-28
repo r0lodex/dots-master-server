@@ -34,6 +34,7 @@ const (
 	ERR_FORBIDDEN_CRON_URL = "This api can be accessed only from admin accaunt"
 
 	MAX_GAME_SERVER_COUNT = 100
+	DEFAULT_GAME_SERVER_PORT = ":8081"
 )
 
 type GameServerActivationResult struct {
@@ -127,7 +128,7 @@ func gameSrvActivationHandler(response http.ResponseWriter, request *http.Reques
 
 	context := appengine.NewContext(request)
 
-	err := pingGameServer(context, request.RemoteAddr)
+	err := pingGameServer(context, request.RemoteAddr + DEFAULT_GAME_SERVER_PORT)
 	if err != nil {
 		http.Error(response, err.Error(), http.StatusInternalServerError)
 		return
@@ -142,7 +143,7 @@ func gameSrvActivationHandler(response http.ResponseWriter, request *http.Reques
 		}
 	}
 	gameServer.Name = request.FormValue(KEY_SERVER_NAME)
-	gameServer.Address = request.RemoteAddr
+	gameServer.Address = request.RemoteAddr + DEFAULT_GAME_SERVER_PORT
 	gameServer.Active = request.FormValue(KEY_ACTIVE) == "true"
 	gameServer.ProtocolVersion = protocolVersion
 	gameServer.LastActivationChange = time.Now()
@@ -183,7 +184,7 @@ func gameSrvQueryConnectionHandler(response http.ResponseWriter, request *http.R
 
 func pingGameServer(context appengine.Context, address string) (error){
 	client := urlfetch.Client(context)
-	pingAddress := "http://" + address + ":8081" + REMOTE_GAME_SERVER_PING_PATH
+	pingAddress := "http://" + address + REMOTE_GAME_SERVER_PING_PATH
 	log.Println(pingAddress)
 	resp, err := client.Get(pingAddress)
 	if err != nil {
