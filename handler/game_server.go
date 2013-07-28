@@ -45,10 +45,10 @@ type GameServerQueryConnectionResult struct {
 }
 
 func init() {
-	http.HandleFunc("/gamesrv/query-connection", gameSrvQueryConnectionHandler)
-	http.HandleFunc("/gamesrv/activation", gameSrvActivationHandler)
-	http.HandleFunc("/gamesrv/cron", gameSrvCronHandler)
-	http.HandleFunc("/gamesrv/servers-list", gameSrvListHandler)
+	http.HandleFunc("/api/gamesrv/query-connection", gameSrvQueryConnectionHandler)
+	http.HandleFunc("/api/gamesrv/activation", gameSrvActivationHandler)
+	http.HandleFunc("/api/gamesrv/cron", gameSrvCronHandler)
+	http.HandleFunc("/api/gamesrv/servers-list", gameSrvListHandler)
 }
 
 func gameSrvListHandler(response http.ResponseWriter, request *http.Request) {
@@ -183,7 +183,9 @@ func gameSrvQueryConnectionHandler(response http.ResponseWriter, request *http.R
 
 func pingGameServer(context appengine.Context, address string) (error){
 	client := urlfetch.Client(context)
-	resp, err := client.Get(address + REMOTE_GAME_SERVER_PING_PATH)
+	pingAddress := "http://" + address + ":8081" + REMOTE_GAME_SERVER_PING_PATH
+	log.Println(pingAddress)
+	resp, err := client.Get(pingAddress)
 	if err != nil {
 		return err
 	}
