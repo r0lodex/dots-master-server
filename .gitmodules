@@ -1,0 +1,3 @@
+[submodule "static/html5client"]
+	path = static/html5client
+	url = https://github.com/truefedex/dots-html5-client.git
