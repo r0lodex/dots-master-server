@@ -5,7 +5,7 @@ import (
 )
 
 const (
-	INDEX_FILE_PATH        = "/html5client/index.html"
+	INDEX_FILE_PATH        = "/static/html5client/index.html"
 )
 
 func init() {
