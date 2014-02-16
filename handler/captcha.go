@@ -13,10 +13,11 @@ import (
 	"math/rand"
 	"net/http"
 	"os"
-	"github.com/truefedex/dots-master-server/model"
-	"github.com/truefedex/dots-master-server/utils"
 	"strconv"
 	"time"
+
+	"model"
+	"utils"
 )
 
 const (

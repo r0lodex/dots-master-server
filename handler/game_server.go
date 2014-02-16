@@ -13,9 +13,10 @@ import (
 	"fmt"
 	"time"
 	"errors"
-	"github.com/truefedex/dots-master-server/utils"
-	"github.com/truefedex/dots-master-server/model"
-	"github.com/truefedex/dots-master-server/base"
+
+	"utils"
+	"model"
+	"base"
 )
 
 const (

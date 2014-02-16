@@ -7,10 +7,11 @@ import (
 	"fmt"
 	"log"
 	"net/http"
-	"github.com/truefedex/dots-master-server/model"
-	"github.com/truefedex/dots-master-server/base"
-	"github.com/truefedex/dots-master-server/utils"
 	"time"
+
+	"model"
+	"base"
+	"utils"
 )
 
 const (

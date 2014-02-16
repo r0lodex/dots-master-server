@@ -2,7 +2,8 @@ package handler
 
 import (
 	"net/http"
-	"github.com/truefedex/dots-master-server/utils"
+
+	"utils"
 )
 
 func init() {
